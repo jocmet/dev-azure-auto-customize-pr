@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+  <g font-family="Arial" font-size="14">
+    <rect x="1" y="8" width="30" height="15" rx="3" ry="3" fill="white" stroke="rgb(0, 120, 212)" stroke-width="1"/>
+    <text x="2" y="19" text-decoration="line-through">m:</text>
+    <text x="21" y="19">a</text>
+  </g>
+</svg>
