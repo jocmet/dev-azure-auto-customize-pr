@@ -10,10 +10,18 @@
     "96": "icon/96.png",
     "128": "icon/128.png"
   },
+  "action": {},
+  "background": {
+    "service_worker": "src/background.ts"
+  },
   "content_scripts": [
     {
-      "matches": ["https://dev.azure.com/*"],
-      "js": ["src/content.ts"]
+      "matches": [
+        "https://dev.azure.com/*"
+      ],
+      "js": [
+        "src/client.ts"
+      ]
     }
   ]
 }

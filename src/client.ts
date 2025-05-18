@@ -1,18 +1,41 @@
+import browser from 'webextension-polyfill';
+import {Message} from './common';
+
 const dropEventName = 'ad099b39-73ad-466b-a999-a0ed8978306c';
 document.dispatchEvent(new CustomEvent(dropEventName));
+
 const observer = new window.MutationObserver(execute);
 observer.observe(document.body, {childList: true, subtree: true});
 document.addEventListener(dropEventName, () => observer.disconnect(), {once: true});
 
+type State = '-' | 'pr' | 'c';
+
+let state: undefined | State;
+
+function setState(value: State): void {
+  if (value === state) return;
+  state = value;
+  const message: Message = {command: 'set-state', state};
+  browser.runtime.sendMessage(message).catch(() => observer.disconnect());
+}
+
+setState('-');
+
 function execute(): void {
   if (pullrequest()) {
     const dialog = modalDialog();
-    dialog && checkbox(dialog) && input(dialog);
+    if (dialog && checkbox(dialog) && input(dialog)) {
+      setState('c');
+    } else {
+      setState('pr');
+    }
+  } else {
+    setState('-');
   }
 }
 
 function pullrequest(): boolean {
-  const pattern = /^\/([^\/]+)\/([^\/]+)\/_git\/([^\/]+)\/pullrequest\/([0-9]+)$/i;
+  const pattern = /^\/([^/]+)\/([^/]+)\/_git\/([^/]+)\/pullrequest\/([0-9]+)$/i;
   return pattern.test(window.location.pathname);
 }
 
@@ -50,7 +73,6 @@ function input(dialog: HTMLElement): boolean {
   const input = dialog.querySelector<HTMLInputElement>(selector);
   if (!input) return false;
   const value = input.value.replace(/^Merged PR [0-9]+: */i, '');
-  if (value === input.value) return true;
   input.value = value;
-  return false;
+  return true;
 }
