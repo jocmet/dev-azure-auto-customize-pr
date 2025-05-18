@@ -1,0 +1,39 @@
+{
+  "name": "azure-devops-without-merged-pr",
+  "version": "0.1.0",
+  "description": "Chrome extension to complete pull requests  with customize merge commit message on dev.azure.com",
+  "author": "Jochen Metzinger",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jocmet/dev-azure-auto-customize-pr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jocmet/dev-azure-auto-customize-pr/issues"
+  },
+  "homepage": "https://github.com/jocmet/dev-azure-auto-customize-pr#readme",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "create-icons": "node create-icons.cjs",
+    "prettier": "prettier --log-level warn --write src",
+    "ncu": "npm-check-updates -i --format group"
+  },
+  "dependencies": {
+    "webextension-polyfill": "^0.12.0"
+  },
+  "devDependencies": {
+    "@types/webextension-polyfill": "^0.12.3",
+    "npm-check-updates": "~18.0.1",
+    "prettier": "~3.5.3",
+    "sharp": "~0.34.1",
+    "typescript": "~5.8.3",
+    "vite": "^6.3.5",
+    "vite-plugin-web-extension": "^4.4.3"
+  },
+  "volta": {
+    "node": "22.15.1"
+  }
+}
