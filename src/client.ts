@@ -11,9 +11,14 @@ document.addEventListener(dropEventName, shutdown, {once: true});
 let state: undefined | State;
 setState('-');
 
+let intervallId = 0;
+
 function execute(): void {
   const nextState = next();
   setState(nextState);
+  if (state !== 'dg') {
+    stopIntervall();
+  }
 }
 
 function next(): State {
@@ -21,8 +26,8 @@ function next(): State {
   const dialog = modalDialog();
   if (dialog === undefined) return 'pr';
   if (state == 'rm') return 'rm';
-  // TODO: start intervall?
   if (checkbox(dialog) && inputTitle(dialog)) return 'rm';
+  startIntervall();
   return 'dg';
 }
 
@@ -79,6 +84,18 @@ function inputTitle(dialog: HTMLElement): boolean {
   return true;
 }
 
+function startIntervall() {
+  if (intervallId !== 0) return;
+  intervallId = window.setInterval(execute, 200);
+}
+
+function stopIntervall() {
+  if (intervallId === 0) return;
+  window.clearInterval(intervallId);
+  intervallId = 0;
+}
+
 function shutdown() {
+  stopIntervall();
   observer.disconnect();
 }
