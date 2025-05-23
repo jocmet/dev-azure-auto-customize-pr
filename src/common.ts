@@ -1,3 +1,3 @@
-export type State = '-' | 'pr' | 'c';
+export type State = '-' | 'pr' | 'dg' | 'rm';
 
 export type Message = {command: 'set-state'; state: State};

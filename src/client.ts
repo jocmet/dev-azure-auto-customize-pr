@@ -9,27 +9,27 @@ observer.observe(document.body, {childList: true, subtree: true});
 document.addEventListener(dropEventName, shutdown, {once: true});
 
 let state: undefined | State;
+setState('-');
+
+function execute(): void {
+  const nextState = next();
+  setState(nextState);
+}
+
+function next(): State {
+  if (!pullrequest()) return '-';
+  const dialog = modalDialog();
+  if (dialog === undefined) return 'pr';
+  if (state == 'rm') return 'rm';
+  if (checkbox(dialog) && inputTitle(dialog)) return 'rm';
+  return 'dg';
+}
 
 function setState(value: State): void {
   if (value === state) return;
   state = value;
   const message: Message = {command: 'set-state', state};
   browser.runtime.sendMessage(message).catch(() => observer.disconnect());
-}
-
-setState('-');
-
-function execute(): void {
-  if (pullrequest()) {
-    const dialog = modalDialog();
-    if (dialog && checkbox(dialog) && input(dialog)) {
-      setState('c');
-    } else {
-      setState('pr');
-    }
-  } else {
-    setState('-');
-  }
 }
 
 function pullrequest(): boolean {
@@ -66,12 +66,13 @@ function checkbox(dialog: HTMLElement): boolean {
   return false;
 }
 
-function input(dialog: HTMLElement): boolean {
+function inputTitle(dialog: HTMLElement): boolean {
   const selector = "input[aria-label='Title']";
-  const input = dialog.querySelector<HTMLInputElement>(selector);
-  if (!input) return false;
-  const value = input.value.replace(/^Merged PR [0-9]+: */i, '');
-  input.value = value;
+  const element = dialog.querySelector<HTMLInputElement>(selector);
+  if (!element) return false;
+  const value = element.value.replace(/^Merged PR [0-9]+: */i, '');
+  if (value === element.value) return false;
+  element.value = value;
   return true;
 }
 
