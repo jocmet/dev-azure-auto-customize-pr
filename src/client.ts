@@ -6,7 +6,7 @@ document.dispatchEvent(new CustomEvent(dropEventName));
 
 const observer = new window.MutationObserver(execute);
 observer.observe(document.body, {childList: true, subtree: true});
-document.addEventListener(dropEventName, () => observer.disconnect(), {once: true});
+document.addEventListener(dropEventName, shutdown, {once: true});
 
 let state: undefined | State;
 
@@ -73,4 +73,8 @@ function input(dialog: HTMLElement): boolean {
   const value = input.value.replace(/^Merged PR [0-9]+: */i, '');
   input.value = value;
   return true;
+}
+
+function shutdown() {
+  observer.disconnect();
 }
