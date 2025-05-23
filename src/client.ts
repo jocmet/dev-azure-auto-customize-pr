@@ -21,6 +21,7 @@ function next(): State {
   const dialog = modalDialog();
   if (dialog === undefined) return 'pr';
   if (state == 'rm') return 'rm';
+  // TODO: start intervall?
   if (checkbox(dialog) && inputTitle(dialog)) return 'rm';
   return 'dg';
 }
@@ -73,6 +74,8 @@ function inputTitle(dialog: HTMLElement): boolean {
   const value = element.value.replace(/^Merged PR [0-9]+: */i, '');
   if (value === element.value) return false;
   element.value = value;
+  element.setSelectionRange(0, 0);
+  element.dispatchEvent(new Event('input', {bubbles: true}));
   return true;
 }
 
