@@ -1,5 +1,6 @@
 import {defineConfig} from 'vite';
 import webExtension, {readJsonFile} from 'vite-plugin-web-extension';
+import eslint from 'vite-plugin-eslint';
 
 function generateManifest() {
   const manifest = readJsonFile('src/manifest.json');
@@ -21,5 +22,6 @@ export default defineConfig({
       disableAutoLaunch: true,
       manifest: generateManifest,
     }),
+    eslint(),
   ],
 });

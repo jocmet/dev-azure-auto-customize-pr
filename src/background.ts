@@ -1,5 +1,5 @@
 import browser from 'webextension-polyfill';
-import {Message} from './common';
+import {Message, State} from './common';
 
 browser.runtime.onMessage.addListener(onMessage);
 
@@ -15,9 +15,16 @@ async function onMessage(message: unknown, sender: browser.Runtime.MessageSender
   }
 }
 
-async function setState(tabId: number, state: string) {
+async function setState(tabId: number, state: State) {
   await browser.action.setBadgeTextColor({tabId, color: 'white'});
-  const color = state === '-' ? 'gray' : 'red';
+  const color = backgroundColor[state] ?? 'black';
   await browser.action.setBadgeBackgroundColor({tabId, color});
   await browser.action.setBadgeText({tabId, text: state});
 }
+
+const backgroundColor: Record<State, browser.Action.ColorValue> = {
+  '-': 'gray',
+  'pr': 'red',
+  'dg': 'red',
+  'rm': 'green',
+} as const;

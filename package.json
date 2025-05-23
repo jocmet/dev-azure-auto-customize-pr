@@ -1,6 +1,6 @@
 {
   "name": "azure-devops-without-merged-pr",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Chrome extension to complete pull requests  with customize merge commit message on dev.azure.com",
   "author": "Jochen Metzinger",
   "license": "MIT",
@@ -15,23 +15,32 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "prestart": "rimraf dist",
+    "start": "run-s eslint prettier build",
     "dev": "vite",
     "build": "tsc && vite build",
-    "create-icons": "node create-icons.cjs",
+    "create-icons": "node create-icons.mjs",
+    "eslint": "eslint src",
     "prettier": "prettier --log-level warn --write src",
     "ncu": "npm-check-updates -i --format group"
   },
   "dependencies": {
-    "webextension-polyfill": "^0.12.0"
+    "webextension-polyfill": "~0.12.0"
   },
   "devDependencies": {
-    "@types/webextension-polyfill": "^0.12.3",
+    "@eslint/js": "~9.27.0",
+    "@types/webextension-polyfill": "~0.12.3",
+    "eslint": "~9.27.0",
     "npm-check-updates": "~18.0.1",
+    "npm-run-all2": "~8.0.3",
     "prettier": "~3.5.3",
+    "rimraf": "~6.0.1",
     "sharp": "~0.34.1",
     "typescript": "~5.8.3",
-    "vite": "^6.3.5",
-    "vite-plugin-web-extension": "^4.4.3"
+    "typescript-eslint": "~8.32.1",
+    "vite": "~6.3.5",
+    "vite-plugin-eslint": "~1.8.1",
+    "vite-plugin-web-extension": "~4.4.3"
   },
   "volta": {
     "node": "22.15.1"

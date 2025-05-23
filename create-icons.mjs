@@ -1,13 +1,9 @@
-const fs = require('fs');
-const sharp = require('sharp');
+/* eslint-env node */
+import fs from 'node:fs';
+import sharp from 'sharp';
 
-const icon = Buffer.from(fs.readFileSync(__dirname + '/src/icon/icon.svg', 'utf8'));
-const jobs = [16, 24, 32, 48, 96].map((s) =>
-  sharp(icon)
-    .png()
-    .resize(s)
-    .toFile(__dirname + `/public/icon/${s}.png`)
-);
+const icon = Buffer.from(fs.readFileSync('src/icon/icon.svg', 'utf8'));
+const jobs = [16, 24, 32, 48, 96].map((s) => sharp(icon).png().resize(s).toFile(`public/icon/${s}.png`));
 const padding = 8;
 jobs.push(
   sharp(icon)
@@ -20,7 +16,7 @@ jobs.push(
       background: {r: 255, g: 255, b: 255, alpha: 0},
     })
     .png()
-    .toFile(__dirname + `/public/icon/128.png`)
+    .toFile('public/icon/128.png')
 );
 
 Promise.all(jobs)
