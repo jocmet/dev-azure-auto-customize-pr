@@ -16,7 +16,7 @@ jobs.push(
       background: {r: 255, g: 255, b: 255, alpha: 0},
     })
     .png()
-    .toFile(`public/icon/128.png`)
+    .toFile('public/icon/128.png')
 );
 
 Promise.all(jobs)
