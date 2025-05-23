@@ -1,5 +1,5 @@
 import browser from 'webextension-polyfill';
-import {Message} from './common';
+import {Message, State} from './common';
 
 const dropEventName = 'ad099b39-73ad-466b-a999-a0ed8978306c';
 document.dispatchEvent(new CustomEvent(dropEventName));
@@ -7,8 +7,6 @@ document.dispatchEvent(new CustomEvent(dropEventName));
 const observer = new window.MutationObserver(execute);
 observer.observe(document.body, {childList: true, subtree: true});
 document.addEventListener(dropEventName, () => observer.disconnect(), {once: true});
-
-type State = '-' | 'pr' | 'c';
 
 let state: undefined | State;
 
