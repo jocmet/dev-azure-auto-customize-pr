@@ -1,3 +1,6 @@
 export type State = '-' | 'pr' | 'dg' | 'rm';
 
-export type Message = {command: 'set-state'; state: State};
+export interface Message {
+  command: 'set-state';
+  state: State;
+}

@@ -16,12 +16,8 @@
   },
   "content_scripts": [
     {
-      "matches": [
-        "https://dev.azure.com/*"
-      ],
-      "js": [
-        "src/client.ts"
-      ]
+      "matches": ["https://dev.azure.com/*"],
+      "js": ["src/client.ts"]
     }
   ]
 }
