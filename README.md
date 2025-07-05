@@ -22,6 +22,18 @@ It then enables the "Customize merge commit" option and removes the "Merged PR .
 1. Enable developer mode
 1. Click on load unpacked extension and select the folder `dist/chrome`
 
+### Firefox
+
+1. Clone this repo
+1. Install packages: `npm ci`
+1. Build add-on: `npm run build:firefox`
+1. Go to add-on page [about:debugging#/runtime/this-firefox](about:debugging#/runtime/this-firefox)
+1. Click on temporary add-on install button and select the folder `dist/firefox`
+
+### Packages
+
+The packages `web-ext-artifacts/*/*.zip` for chrome and firefox are built by `npm start`.
+
 ## License
 
 MIT
