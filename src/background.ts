@@ -7,11 +7,8 @@ async function onMessage(message: unknown, sender: browser.Runtime.MessageSender
   const tabId = sender.tab?.id;
   if (!tabId) return;
   const command = message as Message;
-  if (!command) return;
-  switch (command.command) {
-    case 'set-state':
-      await setState(tabId, command.state);
-      break;
+  if (command?.command === 'set-state') {
+    await setState(tabId, command.state);
   }
 }
 
