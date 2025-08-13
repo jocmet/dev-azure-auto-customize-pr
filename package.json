@@ -15,19 +15,24 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "prestart": "rimraf dist",
-    "start": "run-s eslint prettier build",
-    "start:chrome": "run-s eslint prettier build:chrome",
-    "start:firefox": "run-s eslint prettier build:firefox",
+    "prestart": "rimraf dist web-ext-artifacts",
+    "start": "run-s eslint prettier build package",
+    "start:chrome": "run-s eslint prettier build:chrome package:chrome",
+    "start:firefox": "run-s eslint prettier build:firefox package:firefox",
     "build": "run-s build:*",
     "build:chrome": "tsc && cross-env BROWSER=chrome vite build",
     "build:firefox": "tsc && cross-env BROWSER=firefox vite build",
+    "package": "run-s package:*",
+    "package:chrome": "web-ext build -s dist/chrome -a web-ext-artifacts/chrome",
+    "prepackage:firefox": "web-ext lint -s dist/firefox",
+    "package:firefox": "web-ext build -s dist/firefox -a web-ext-artifacts/firefox",
     "create-icons": "node create-icons.mjs",
     "eslint": "eslint src",
     "prettier": "prettier --log-level warn --write src",
     "ncu": "npm-check-updates -i --format group"
   },
   "dependencies": {
+    "web-ext": "~8.9.0",
     "webextension-polyfill": "~0.12.0"
   },
   "devDependencies": {
