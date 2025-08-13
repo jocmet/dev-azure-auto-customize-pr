@@ -11,8 +11,14 @@
     "128": "icon/128.png"
   },
   "action": {},
+  "{{firefox}}.browser_specific_settings": {
+    "gecko": {
+      "id": "{9e34dc90-55ac-454b-b0dd-06db83bd82fc}"
+    }
+  },
   "background": {
-    "service_worker": "src/background.ts"
+    "{{chrome}}.service_worker": "src/background.ts",
+    "{{firefox}}.scripts": ["src/background.ts"]
   },
   "content_scripts": [
     {
