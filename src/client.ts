@@ -39,7 +39,7 @@ function setState(value: State): void {
 }
 
 function pullrequest(): boolean {
-  const pattern = /^\/([^/]+)\/([^/]+)\/_git\/([^/]+)\/pullrequest\/([0-9]+)$/i;
+  const pattern = /^\/([^/]+)\/([^/]+)\/_git\/([^/]+)\/pullrequest\/(\d+)$/i;
   return pattern.test(window.location.pathname);
 }
 
@@ -76,7 +76,7 @@ function inputTitle(dialog: HTMLElement): boolean {
   const selector = "input[aria-label='Title']";
   const element = dialog.querySelector<HTMLInputElement>(selector);
   if (!element) return false;
-  const value = element.value.replace(/^Merged PR [0-9]+: */i, '');
+  const value = element.value.replace(/^Merged PR \d+: */i, '');
   if (value === element.value) return false;
   element.value = value;
   element.setSelectionRange(0, 0);
