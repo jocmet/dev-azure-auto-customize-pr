@@ -17,8 +17,9 @@
   "scripts": {
     "prestart": "rimraf dist",
     "start": "run-s eslint prettier build",
-    "dev": "vite",
-    "build": "tsc && vite build",
+    "start:chrome": "run-s eslint prettier build:chrome",
+    "build": "run-s build:*",
+    "build:chrome": "tsc && cross-env BROWSER=chrome vite build",
     "create-icons": "node create-icons.mjs",
     "eslint": "eslint src",
     "prettier": "prettier --log-level warn --write src",
@@ -30,6 +31,7 @@
   "devDependencies": {
     "@eslint/js": "~9.35.0",
     "@types/webextension-polyfill": "~0.12.3",
+    "cross-env": "~10.0.0",
     "eslint": "~9.35.0",
     "npm-check-updates": "~18.1.0",
     "npm-run-all2": "~8.0.4",
