@@ -1,6 +1,6 @@
 {
   "name": "azure-devops-without-merged-pr",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Chrome extension to complete pull requests  with customize merge commit message on dev.azure.com",
   "author": "Jochen Metzinger",
   "license": "MIT",
@@ -28,21 +28,21 @@
     "webextension-polyfill": "~0.12.0"
   },
   "devDependencies": {
-    "@eslint/js": "~9.27.0",
+    "@eslint/js": "~9.35.0",
     "@types/webextension-polyfill": "~0.12.3",
-    "eslint": "~9.27.0",
-    "npm-check-updates": "~18.0.1",
-    "npm-run-all2": "~8.0.3",
-    "prettier": "~3.5.3",
+    "eslint": "~9.35.0",
+    "npm-check-updates": "~18.1.0",
+    "npm-run-all2": "~8.0.4",
+    "prettier": "~3.6.2",
     "rimraf": "~6.0.1",
-    "sharp": "~0.34.1",
-    "typescript": "~5.8.3",
-    "typescript-eslint": "~8.32.1",
-    "vite": "~6.3.5",
+    "sharp": "~0.34.3",
+    "typescript": "~5.9.2",
+    "typescript-eslint": "~8.43.0",
+    "vite": "~7.1.5",
     "vite-plugin-eslint": "~1.8.1",
-    "vite-plugin-web-extension": "~4.4.3"
+    "vite-plugin-web-extension": "~4.4.5"
   },
   "volta": {
-    "node": "22.15.1"
+    "node": "22.19.0"
   }
 }
