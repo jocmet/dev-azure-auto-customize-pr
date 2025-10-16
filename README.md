@@ -14,8 +14,8 @@ It then enables the "Customize merge commit" option and removes the "Merged PR .
 
 ## Install
 
-- Mozilla Firefox: Go to [Add-ons for Firefox](https://addons.mozilla.org/de/firefox/addon/complete-pr-without-merged/) and install.
 - Google Chrome: Go to [Chrome Web Store](https://chromewebstore.google.com/detail/complete-pr-without-merge/djmhpijahmaipeldgjhmibgoppbapmja) and install.
+- Mozilla Firefox: Go to [Add-ons for Firefox](https://addons.mozilla.org/de/firefox/addon/complete-pr-without-merged/) and install.
 
 ## Development
 
