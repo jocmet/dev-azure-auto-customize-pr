@@ -17,6 +17,8 @@ async function setState(tabId: number, state: State) {
   const color = backgroundColor[state] ?? 'black';
   await browser.action.setBadgeBackgroundColor({tabId, color});
   await browser.action.setBadgeText({tabId, text: state});
+  await browser.action.setIcon({tabId, path: {'16': '/icon/16.png', '24': '/icon/24.png', '32': '/icon/32.png'}});
+  await browser.action.disable(tabId);
 }
 
 const backgroundColor: Record<State, browser.Action.ColorValue> = {
