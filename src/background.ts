@@ -2,6 +2,8 @@ import browser from 'webextension-polyfill';
 import {Message, State} from './common';
 
 updateRegisteredContentScripts(); // NOSONARCHECK
+browser.permissions.onAdded.addListener(updateRegisteredContentScripts);
+browser.permissions.onRemoved.addListener(updateRegisteredContentScripts);
 
 async function updateRegisteredContentScripts(): Promise<void> {
   const permissions = await browser.permissions.getAll();
@@ -19,6 +21,32 @@ async function updateRegisteredContentScripts(): Promise<void> {
       },
     ]);
   }
+}
+
+browser.action.onClicked.addListener(onActionClicked);
+
+function onActionClicked(tab: browser.Tabs.Tab): void {
+  const origin = getOrigin(tab.url);
+  if (origin === undefined) return;
+  browser.permissions.request({origins: [origin]}).then((granted) => {
+    if (granted) {
+      browser.scripting
+        .executeScript({
+          target: {tabId: tab.id ?? 0},
+          files: ['src/client.js'],
+        })
+        .then((r) => console.info('loaded script', r))
+        .catch((e) => console.warn('unable to load script', e));
+    }
+  });
+}
+
+function getOrigin(url: string | undefined): string | undefined {
+  if (url === undefined) return undefined;
+  const match = /^(https?:\/\/[^/]+)\/(([^/]+)\/)?([^/]+)\/_git\/([^/]+)\/pullrequest(s|\/(\d+))?($|\?|#)/i.exec(url);
+  if (match) return `${match[1]}/*`;
+  console.debug('unsupported url', url);
+  return undefined;
 }
 
 browser.runtime.onMessage.addListener(onMessage);
