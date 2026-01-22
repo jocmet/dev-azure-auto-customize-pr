@@ -29,6 +29,7 @@ export default defineConfig({
     webExtension({
       disableAutoLaunch: true,
       manifest: generateManifest,
+      additionalInputs: ['src/client.ts'],
       browser,
     }),
   ],

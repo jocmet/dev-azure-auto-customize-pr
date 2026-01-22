@@ -29,10 +29,7 @@
     "{{chrome}}.service_worker": "src/background.ts",
     "{{firefox}}.scripts": ["src/background.ts"]
   },
-  "content_scripts": [
-    {
-      "matches": ["https://dev.azure.com/*"],
-      "js": ["src/client.ts"]
-    }
-  ]
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["https://dev.azure.com/*"],
+  "optional_host_permissions": ["https://*/*", "http://*/*"]
 }

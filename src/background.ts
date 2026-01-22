@@ -1,6 +1,26 @@
 import browser from 'webextension-polyfill';
 import {Message, State} from './common';
 
+updateRegisteredContentScripts(); // NOSONARCHECK
+
+async function updateRegisteredContentScripts(): Promise<void> {
+  const permissions = await browser.permissions.getAll();
+  const origins = permissions.origins ?? [];
+  console.debug('update registered content scripts', origins);
+  await browser.scripting.unregisterContentScripts();
+  if (origins.length > 0) {
+    await browser.scripting.registerContentScripts([
+      {
+        id: 'client-script',
+        matches: origins,
+        js: ['src/client.js'],
+        persistAcrossSessions: true,
+        runAt: 'document_idle',
+      },
+    ]);
+  }
+}
+
 browser.runtime.onMessage.addListener(onMessage);
 
 async function onMessage(message: unknown, sender: browser.Runtime.MessageSender): Promise<void> {
