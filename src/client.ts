@@ -4,14 +4,14 @@ import {Message, State} from './common';
 const dropEventName = 'ad099b39-73ad-466b-a999-a0ed8978306c';
 document.dispatchEvent(new CustomEvent(dropEventName));
 
-const observer = new window.MutationObserver(execute);
+const observer = new globalThis.MutationObserver(execute);
 observer.observe(document.body, {childList: true, subtree: true});
 document.addEventListener(dropEventName, shutdown, {once: true});
 
 let state: undefined | State;
 setState('-');
 
-let intervallId = 0;
+let intervallId: ReturnType<typeof globalThis.setInterval> | undefined = undefined;
 
 function execute(): void {
   const nextState = next();
@@ -40,7 +40,7 @@ function setState(value: State): void {
 
 function pullrequest(): boolean {
   const pattern = /^\/([^/]+)\/([^/]+)\/_git\/([^/]+)\/pullrequest\/(\d+)$/i;
-  return pattern.test(window.location.pathname);
+  return pattern.test(globalThis.location.pathname);
 }
 
 function modalDialog(): HTMLDivElement | undefined {
@@ -85,14 +85,14 @@ function inputTitle(dialog: HTMLElement): boolean {
 }
 
 function startIntervall() {
-  if (intervallId !== 0) return;
-  intervallId = window.setInterval(execute, 200);
+  if (intervallId !== undefined) return;
+  intervallId = globalThis.setInterval(execute, 200);
 }
 
 function stopIntervall() {
-  if (intervallId === 0) return;
-  window.clearInterval(intervallId);
-  intervallId = 0;
+  if (intervallId === undefined) return;
+  globalThis.clearInterval(intervallId);
+  intervallId = undefined;
 }
 
 function shutdown() {
