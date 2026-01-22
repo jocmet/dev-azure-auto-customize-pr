@@ -39,7 +39,7 @@ function setState(value: State): void {
 }
 
 function pullrequest(): boolean {
-  const pattern = /^\/([^/]+)\/([^/]+)\/_git\/([^/]+)\/pullrequest\/(\d+)$/i;
+  const pattern = /^\/(([^/]+)\/)?([^/]+)\/_git\/([^/]+)\/pullrequest\/(\d+)$/i;
   return pattern.test(globalThis.location.pathname);
 }
 
