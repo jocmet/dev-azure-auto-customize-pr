@@ -24,6 +24,7 @@ To use the extension with on-premise or `*.visualstudio.com` Azure DevOps instan
 ### Chrome
 
 1. Clone this repo
+1. Use node 24.13.0 or higher
 1. Install packages: `npm ci`
 1. Build extension: `npm run build:chrome`
 1. Go to chrome extensions [chrome://extensions](chrome://extensions)
@@ -33,6 +34,7 @@ To use the extension with on-premise or `*.visualstudio.com` Azure DevOps instan
 ### Firefox
 
 1. Clone this repo
+1. Use node 24.13.0 or higher
 1. Install packages: `npm ci`
 1. Build add-on: `npm run build:firefox`
 1. Go to add-on page [about:debugging#/runtime/this-firefox](about:debugging#/runtime/this-firefox)
