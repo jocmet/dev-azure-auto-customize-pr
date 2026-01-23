@@ -25,7 +25,7 @@ function next(): State {
   if (!pullrequest()) return '-';
   const dialog = modalDialog();
   if (dialog === undefined) return 'pr';
-  if (state == 'rm') return 'rm';
+  if (state === 'rm') return 'rm';
   if (checkbox(dialog) && inputTitle(dialog)) return 'rm';
   startIntervall();
   return 'dg';
