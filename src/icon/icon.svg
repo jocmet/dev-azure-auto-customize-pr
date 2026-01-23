@@ -1,7 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
   <g font-family="Arial" font-size="14">
-    <rect x="1" y="8" width="30" height="15" rx="3" ry="3" fill="white" stroke="rgb(0, 120, 212)" stroke-width="1"/>
-    <text x="2" y="19" text-decoration="line-through">m:</text>
-    <text x="21" y="19">a</text>
+    <circle cx="16" cy="16" r="16" fill="#0078d4" />
+    <rect x="3" y="10" width="26" height="12" fill="#ffffff" rx="1" ry="1" />
+    <text x="4" y="20" fill="#000000" text-decoration="line-through">m:</text>
+    <text x="19.6" y="20" fill="#000000">a</text>
   </g>
 </svg>
