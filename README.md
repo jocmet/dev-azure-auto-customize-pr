@@ -40,7 +40,7 @@ To use the extension with on-premise or `*.visualstudio.com` Azure DevOps instan
 
 ### Packages
 
-The packages `web-ext-artifacts/*/*.zip` for chrome and firefox are built by `npm start`.
+The packages `web-ext-artifacts/*.zip` for chrome and firefox are built by `npm start`.
 
 ## License
 
