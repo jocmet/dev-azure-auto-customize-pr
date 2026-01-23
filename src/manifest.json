@@ -10,7 +10,13 @@
     "96": "icon/96.png",
     "128": "icon/128.png"
   },
-  "action": {},
+  "action": {
+    "default_icon": {
+      "16": "icon/disable-16.png",
+      "24": "icon/disable-24.png",
+      "32": "icon/disable-32.png"
+    }
+  },
   "{{firefox}}.browser_specific_settings": {
     "gecko": {
       "id": "{9e34dc90-55ac-454b-b0dd-06db83bd82fc}",
@@ -23,10 +29,7 @@
     "{{chrome}}.service_worker": "src/background.ts",
     "{{firefox}}.scripts": ["src/background.ts"]
   },
-  "content_scripts": [
-    {
-      "matches": ["https://dev.azure.com/*"],
-      "js": ["src/client.ts"]
-    }
-  ]
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["https://dev.azure.com/*"],
+  "optional_host_permissions": ["https://*/*", "http://*/*"]
 }

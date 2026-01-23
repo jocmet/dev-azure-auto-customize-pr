@@ -19,6 +19,9 @@ jobs.push(
     .toFile('public/icon/128.png')
 );
 
+const disable = Buffer.from(fs.readFileSync('src/icon/disable.svg', 'utf8'));
+jobs.push(...[16, 24, 32].map((s) => sharp(disable).png().resize(s).toFile(`public/icon/disable-${s}.png`)));
+
 Promise.all(jobs)
   .then(() => console.log('done'))
   .catch((err) => console.error('errors:', err));
