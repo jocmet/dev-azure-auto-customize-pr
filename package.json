@@ -1,7 +1,7 @@
 {
   "name": "azure-devops-without-merged-pr",
   "version": "0.3.0",
-  "description": "Chrome extension to complete pull requests  with customize merge commit message on dev.azure.com",
+  "description": "Browser extension to complete pull requests  with customize merge commit message on dev.azure.com",
   "author": "Jochen Metzinger",
   "license": "MIT",
   "repository": {
@@ -35,23 +35,23 @@
     "webextension-polyfill": "~0.12.0"
   },
   "devDependencies": {
-    "@eslint/js": "~9.39.2",
-    "@types/webextension-polyfill": "~0.12.4",
+    "@eslint/js": "~10.0.1",
+    "@types/webextension-polyfill": "~0.12.5",
     "cross-env": "~10.1.0",
-    "eslint": "~9.39.2",
-    "npm-check-updates": "~19.3.1",
+    "eslint": "~10.2.1",
+    "npm-check-updates": "~21.0.3",
     "npm-run-all2": "~8.0.4",
-    "prettier": "~3.8.0",
-    "rimraf": "~6.1.2",
+    "prettier": "~3.8.3",
+    "rimraf": "~6.1.3",
     "sharp": "~0.34.5",
-    "typescript": "~5.9.3",
-    "typescript-eslint": "~8.53.1",
-    "vite": "~7.3.1",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "~8.59.0",
+    "vite": "~8.0.9",
     "vite-plugin-eslint": "~1.8.1",
-    "vite-plugin-web-extension": "~4.5.0",
-    "web-ext": "~9.2.0"
+    "vite-plugin-web-extension": "~4.5.1",
+    "web-ext": "~10.1.0"
   },
   "volta": {
-    "node": "24.13.0"
+    "node": "24.15.0"
   }
 }
