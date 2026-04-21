@@ -1,7 +1,7 @@
 {
   "name": "azure-devops-without-merged-pr",
   "version": "0.3.0",
-  "description": "Chrome extension to complete pull requests  with customize merge commit message on dev.azure.com",
+  "description": "Browser extension to complete pull requests  with customize merge commit message on dev.azure.com",
   "author": "Jochen Metzinger",
   "license": "MIT",
   "repository": {
@@ -52,6 +52,6 @@
     "web-ext": "~9.2.0"
   },
   "volta": {
-    "node": "24.13.0"
+    "node": "24.15.0"
   }
 }
